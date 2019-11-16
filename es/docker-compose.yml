@@ -1,0 +1,15 @@
+version: '3'
+services:
+  elasticsearch:
+    image: elasticsearch:7.4.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - elasticsearch
+networks:
+  elasticsearch:
+    driver: bridge
