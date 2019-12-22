@@ -1,8 +1,8 @@
 version: '3'
 services:
-  db:
+  mysqldb:
     image: mysql:5.7
-    container_name: mysql-db
+    container_name: mysqldb
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     restart: always
     environment:
@@ -14,3 +14,8 @@ services:
     volumes:
       - "./data/db:/var/lib/mysql"    
       - "./conf:/etc/mysql/conf.d"
+    networks:
+      - net
+networks:
+  net:
+    external: true
